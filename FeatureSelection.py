@@ -127,7 +127,7 @@ def main():
         result = F.backwardElimination()
     endtime = time.time() - startTime
     # print result 
-    print("SEARCH FINISHED! The best feature subset is " + str(result[1]) + ", with an accurace of " + str(result[0]) + "%. \n\n\n")
+    print("SEARCH FINISHED! The best feature subset is " + str(result[1]) + ", with an accuracy of " + str(result[0]) + "%. \n\n\n")
     print("The program took " + str(endtime) + " seconds to run.")
 
     
