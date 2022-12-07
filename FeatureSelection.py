@@ -1,5 +1,4 @@
 import time
-
 class FeatureSelection:
     def __init__(self, data):
         self.data = data
@@ -26,7 +25,6 @@ class FeatureSelection:
                 if self.data[i][0] == self.data[minDis[1]][0]:
                     count += 1
             minDis = [999,0]
-        # print("Using feature { ", count/len(self.data))
         return count / len(self.data)
 
     
@@ -96,16 +94,43 @@ class FeatureSelection:
 
 def main():
     data = []
-    with open("P2_datasets/CS170_Large_Data__124.txt", "r") as file:
-        data = [[x for x in line.split()] for line in file]
-    # print(data)
-    F = FeatureSelection(data)
-    startTime = time.time()
-    print("FORWARD: ", F.forwardSelection())
-    endtime = time.time()
-    totalTime = endtime - startTime
-    print("Time: ", totalTime)
-    # print("BACKWORD: ", F.backwardElimination())
+    print("Welcome to the Feature Selection Algorithm.")
+        
+
+    userInput = input("Do you want to test with Small file or Large file? (type 's' or 'l'):  ")
+
+    if userInput == 's':
+        userInput = input("Please type the number of the file you want to test with 1 - 125. (e.x. '1' or '23' or '36' or '98'):  ")
+        fileName = "P2_datasets/CS170_Small_Data__" + userInput + ".txt"
+        # converting .txt file to 2D array
+        with open(fileName, "r") as file:
+            data = [[x for x in line.split()] for line in file]
+            F = FeatureSelection(data)
+    elif userInput == 'l':
+        userInput = input("Please type the number of the file you want to test with 1 - 125. (e.x. '1' or '23' or '36' or '98'):  ")
+        fileName = "P2_datasets/CS170_Large_Data__" + userInput + ".txt"
+        with open(fileName, "r") as file:
+            data = [[x for x in line.split()] for line in file]
+            F = FeatureSelection(data)
+    else:
+        print("Invalid input. Please try again.")
+        return
+    
+    print("Please type the number of the algorithm you want to use. (1 or 2)")
+    print("1. Forward Selection")
+    userInput = input("2. Backward Elimination:  ")
+    if userInput == '1':
+        startTime = time.time()
+        result = F.forwardSelection()
+    elif userInput == '2':
+        startTime = time.time()
+        result = F.backwardElimination()
+    endtime = time.time() - startTime
+    # print result 
+    print("SEARCH FINISHED! The best feature subset is " + str(result[1]) + ", with an accurace of " + str(result[0]) + "%. \n\n\n")
+    print("The program took " + str(endtime) + " seconds to run.")
+
+    
     
     
 
