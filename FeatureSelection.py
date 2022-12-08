@@ -1,4 +1,3 @@
-import time
 class FeatureSelection:
     def __init__(self, data):
         self.data = data
@@ -149,15 +148,11 @@ def main():
     print("1. Forward Selection")
     userInput = input("2. Backward Elimination:  ")
     if userInput == '1':
-        startTime = time.time()
         result = F.forwardSelection()
     elif userInput == '2':
-        startTime = time.time()
         result = F.backwardElimination()
-    endtime = time.time() - startTime
     # print result 
     print("SEARCH FINISHED! The best feature subset is " + str(result[1]) + ", with an accuracy of " + str(result[0]) + "%. \n\n\n")
-    print("The program took " + str(endtime) + " seconds to run.")
 
     
     
