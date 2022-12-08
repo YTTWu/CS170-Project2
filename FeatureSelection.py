@@ -152,7 +152,7 @@ def main():
     elif userInput == '2':
         result = F.backwardElimination()
     # print result 
-    print("SEARCH FINISHED! The best feature subset is " + str(result[1]) + ", with an accuracy of " + str(result[0]) + "%. \n\n\n")
+    print("SEARCH FINISHED! The best feature subset is " + str(result[1]) + ", with an accuracy of " + str(result[0]) + ". \n\n\n")
 
     
     
